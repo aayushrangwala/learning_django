@@ -1,0 +1,21 @@
+{% block content %}
+
+{% if Post_list %}
+	<h1> Bloggified Blog</h1>
+	{% for post in Post_list %}
+		<h2><a href = "{% url 'blog:details' Post.id %}"> {% post.title %} </a></h2>
+		
+		<div class = "post_meta">
+		<p>on {% post.date|date: "d/m/y" %} </p>
+		</div>
+		
+		<div class = "post_body">
+		
+		{% post.body|safe|linebreaks %}
+		
+		</div>
+		
+	{% endfor %}
+{% endif %}
+
+{% end block content %}
